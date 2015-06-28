@@ -11,3 +11,4 @@ RUN cd /usr/share/nginx/html/demo && \
   mkdocs build
 RUN rm -f /etc/nginx/conf.d/*
 ADD nginx/conf.d /etc/nginx/conf.d/
+RUN sed -i "s|#gzip  on;|gzip  on; etag  off; server_tokens off; gzip_types *;|" /etc/nginx/nginx.conf
